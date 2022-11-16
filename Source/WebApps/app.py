@@ -65,12 +65,12 @@ def inference_image(video, image):
   # Print some stats
   print(f"Features: {video_features.shape}")
 
-  loaded_image = preprocess(image).unsqueeze(0).to(device)
+  search_image = preprocess(Image.open(image)).unsqueeze(0).to(device)
   display_heatmap=False
   display_results_count=1
   # Encode and normalize the search query using CLIP
   with torch.no_grad():
-    image_features = model.encode_image(loaded_image)
+    image_features = model.encode_image(search_image)
     image_features /= image_features.norm(dim=-1, keepdim=True)
 
   # Compute the similarity between the search query and each frame using the Cosine similarity
@@ -169,3 +169,13 @@ gr.Interface(
     article=article,
     examples=examples
     ).launch(debug=True,enable_queue=True,share=True)
+
+# gr.Interface(
+#     inference_image, 
+#     ["video","image"], 
+#     [gr.outputs.Image(type="pil", label="Output"),"text"],
+#     title=title,
+#     description=description,
+#     article=article,
+#     examples=examples
+#     ).launch(debug=True,enable_queue=True,share=True)
