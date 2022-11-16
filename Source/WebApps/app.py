@@ -10,7 +10,6 @@ import torch
 import datetime
 import gradio as gr
 
-
 # Load the open CLIP model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model, preprocess = clip.load("ViT-B/32", device=device)  
@@ -170,13 +169,3 @@ gr.Interface(
     article=article,
     examples=examples
     ).launch(debug=True,enable_queue=True,share=True)
-
-# gr.Interface(
-#     inference, 
-#     ["video","image"], 
-#     [gr.outputs.Image(type="pil", label="Output"),"text"],
-#     title=title,
-#     description=description,
-#     article=article,
-#     examples=examples
-#     ).launch(debug=True,enable_queue=True,share=True)
