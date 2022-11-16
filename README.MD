@@ -14,3 +14,6 @@
 ## WEIGHTS
 **GLIP-T** | [weight](https://drive.google.com/file/d/1nlPL6PHkslarP6RiWJJu6QGKjqHG4tkc/view?usp=sharing)
 **BLIP** | [weight](https://drive.google.com/file/d/1QliNGiAcyCCJLd22eNOxWvMUDzb7GzrO/view?usp=sharing)
+
+## COLAB
+https://colab.research.google.com/drive/1Aku5p0Ib_ACquvmFq42YcESm36gjxakl?usp=sharing#scrollTo=rheoX2xp4ek7
