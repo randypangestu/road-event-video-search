@@ -14,12 +14,11 @@ import gradio as gr
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model, preprocess = clip.load("ViT-B/32", device=device)  
    
-
 def inference_image(video, image):
 # The frame images will be stored in video_frames
   video_frames = []
+
   # Open the video file
-  
   capture = cv2.VideoCapture(video)
   fps = capture.get(cv2.CAP_PROP_FPS)
   
@@ -65,7 +64,7 @@ def inference_image(video, image):
   # Print some stats
   print(f"Features: {video_features.shape}")
 
-  search_image = preprocess(Image.open(image)).unsqueeze(0).to(device)
+  search_image = preprocess(Image.fromarray(image)).unsqueeze(0).to(device)
   display_heatmap=False
   display_results_count=1
   # Encode and normalize the search query using CLIP
@@ -154,8 +153,9 @@ def inference(video, text):
     # Find the timestamp in the video and display it
     seconds = round(frame_id.cpu().numpy()[0]/fps)
   return frame,f"Found at {str(datetime.timedelta(seconds=seconds))}"
-  
-title = "Video Search"
+
+## For Video-Text Query
+title = "Video Search using Text"
 description = "Gradio demo for using OpenAI's CLIP to search inside videos. To use it, simply upload your video and add your text. Read more at the links below."
 article = "<p style='text-align: center'><a href='https://github.com/haltakov/natural-language-youtube-search' target='_blank'>Github Repo</a></p>"
 
@@ -170,6 +170,11 @@ gr.Interface(
     examples=examples
     ).launch(debug=True,enable_queue=True,share=True)
 
+# ## For Video-Image Query
+# title = "Video Search using Image"
+# description = "Gradio demo for using OpenAI's CLIP to search inside videos. To use it, simply upload your video and add your text. Read more at the links below."
+# article = "<p style='text-align: center'><a href='https://github.com/haltakov/natural-language-youtube-search' target='_blank'>Github Repo</a></p>"
+# examples=[['../Data/car_crash.mp4','../Data/crash.jpg']]
 # gr.Interface(
 #     inference_image, 
 #     ["video","image"], 
