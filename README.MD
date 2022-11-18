@@ -18,3 +18,6 @@ https://colab.research.google.com/drive/1Aku5p0Ib_ACquvmFq42YcESm36gjxakl?usp=sh
 
 ## PPT
 https://docs.google.com/presentation/d/1c9ZMEIlxOg_pvj_3WVxgItJn-zuWLQ42/edit#slide=id.g195d35fbd23_0_16
+
+## Visualize
+https://colab.research.google.com/drive/1AP09NW6a4gz_InGDx1fXiSZhGQHCVFLw#scrollTo=RJWJM56goHo8
