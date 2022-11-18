@@ -12,7 +12,7 @@ import datetime
 # Load the open CLIP model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model, preprocess = clip.load("ViT-B/32", device=device)  
-   
+
 def inference_image(video, image):
 # The frame images will be stored in video_frames
   video_frames = []
@@ -81,8 +81,16 @@ def inference_image(video, image):
     seconds = round(frame_id.cpu().numpy()[0]/fps)
   return frame,f"Found at {str(datetime.timedelta(seconds=seconds))}"
  
+def get_text_feature(text, clip):
+  search_query=text
+  # Encode and normalize the search query using CLIP
+  with torch.no_grad():
+    text_features = model.encode_text(clip.tokenize(search_query).to(device))
+    text_features /= text_features.norm(dim=-1, keepdim=True)
+  return text_features
 
-def inference_text(video, text):
+def inference_text(video, text1, text2):
+  texts = [text1, text2]
   # The frame images will be stored in video_frames
   video_frames = []
   # Open the video file
@@ -134,21 +142,19 @@ def inference_text(video, text):
   print(f"Features: {video_features.shape}")
  
  
-  search_query=text
   display_heatmap=False
   display_results_count=1
   # Encode and normalize the search query using CLIP
-  with torch.no_grad():
-    text_features = model.encode_text(clip.tokenize(search_query).to(device))
-    text_features /= text_features.norm(dim=-1, keepdim=True)
-
-  # Compute the similarity between the search query and each frame using the Cosine similarity
-  similarities = (100.0 * video_features @ text_features.T)
-  values, best_photo_idx = similarities.topk(display_results_count, dim=0)
-
-
-  for frame_id in best_photo_idx:
-    frame = video_frames[frame_id]
-    # Find the timestamp in the video and display it
-    seconds = round(frame_id.cpu().numpy()[0]/fps)
-  return frame,f"Found at {str(datetime.timedelta(seconds=seconds))}"
+  frame_list, seconds_list, values_list = [], [], []
+  for text in texts:
+    text_features = get_text_feature(text,clip)
+    similarities = (100.0 * video_features @ text_features.T)
+    values, best_photo_idx = similarities.topk(display_results_count, dim=0)
+    values_list.append(values)
+    for frame_id in best_photo_idx:
+      frame = video_frames[frame_id]
+      seconds = round(frame_id.cpu().numpy()[0]/fps)
+    frame_list.append(frame)
+    seconds_list.append(seconds)
+  return frame_list[0], f"Found at {str(datetime.timedelta(seconds=seconds_list[0])), values_list[0]}", \
+         frame_list[1], f"Found at {str(datetime.timedelta(seconds=seconds_list[1])), values_list[1]}"
