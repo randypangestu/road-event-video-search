@@ -1,23 +1,33 @@
-# Quiet Wire
-# SURVEILLANCE VIDEO ANSWERING
+# Road Events Video Search
 
-## TO DO
-### MODEL
-1. TRANSLATE INDO (optional)
-2. GLIP
+Repository ini menyediakan data, script dan contoh demo untuk Road Events Video Search WebApp.
 
-### INFERENCE
-1. HACKISH FOR OPTIMIZATION
+## Deskripsi
 
-## WEIGHTS
-**GLIP-T** | [weight](https://drive.google.com/file/d/1nlPL6PHkslarP6RiWJJu6QGKjqHG4tkc/view?usp=sharing)
-**BLIP** | [weight](https://drive.google.com/file/d/1QliNGiAcyCCJLd22eNOxWvMUDzb7GzrO/view?usp=sharing)
+Road Events Video Search adalah sebuah sistem yang menggabungkan data teks dan visual untuk mendeteksi anomali pada lalu lintas kendaraan dan pejalan kaki.
 
-## COLAB
-https://colab.research.google.com/drive/1Aku5p0Ib_ACquvmFq42YcESm36gjxakl?usp=sharing#scrollTo=rheoX2xp4ek7
+Sistem ini menggunakan model zero-shot learning yang dilatih menggunakan data visual dan teks. Karena dilatih dengan jumlah data yang sangat banyak dan beragam, model ini dapat digunakan untuk berbagai jenis aplikasi, yakni memiliki sifat yang general.
 
-## PPT
-https://docs.google.com/presentation/d/1c9ZMEIlxOg_pvj_3WVxgItJn-zuWLQ42/edit#slide=id.g195d35fbd23_0_16
+Dalam projek ini, kami akan mengaplikasikan model zero-shot learning CLIP pada kasus spesifik, yaitu fenomena lalu lintas. Kami mengelompokan fenomena lalu lintas menjadi crashes, traffic jam, flood, dan demonstration.
 
-## Visualize
-https://colab.research.google.com/drive/1AP09NW6a4gz_InGDx1fXiSZhGQHCVFLw#scrollTo=RJWJM56goHo8
+## Install
+
+### Jalankan Langsung di Colab (Opsi 1)
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1OtuSS4HBS6qxlBso_KzpfmOuxOlcEaUk/view?usp=sharing)
+
+Untuk mencoba WebApp ini bisa langsung mengunjungi link di atas untuk melakukan deployment WebApp di Colab. Jalankan cell yang ada secara berurutan dan nantinya akan muncul link Gradio yang bisa diakses secara public.
+
+### Install Library Menggunakan pip (Opsi 2)
+
+```bash
+cd Source/WebApps/
+pip3 install -r requirements.txt
+```
+
+### Jalankan Menggunakan Python
+
+```bash
+cd Source/WebApps/
+python3 app.py
+```
