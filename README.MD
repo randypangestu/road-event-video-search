@@ -1,10 +1,10 @@
-# Road Events Video Search
+# Road Event Video Search
 
-Repository ini menyediakan data, script dan contoh demo untuk Road Events Video Search WebApp.
+Repository ini menyediakan data, script dan contoh demo untuk Road Event Video Search WebApp.
 
 ## Deskripsi
 
-Road Events Video Search adalah sebuah sistem yang menggabungkan data teks dan visual untuk mendeteksi anomali pada lalu lintas kendaraan dan pejalan kaki.
+Road Event Video Search adalah sebuah sistem yang menggabungkan data teks dan visual untuk mendeteksi anomali pada lalu lintas kendaraan dan pejalan kaki.
 
 Sistem ini menggunakan model zero-shot learning yang dilatih menggunakan data visual dan teks. Karena dilatih dengan jumlah data yang sangat banyak dan beragam, model ini dapat digunakan untuk berbagai jenis aplikasi, yakni memiliki sifat yang general.
 
