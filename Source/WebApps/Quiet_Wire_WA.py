@@ -28,7 +28,7 @@ threshold_dict = {
     "Demonstration": 23
 }
 
-blank_image = Image.open('/content/image-not-found-scaled.png')
+blank_image = Image.open('../Data/image-not-found-scaled.png')
 
 # Load the open CLIP model
 device = "cuda" if torch.cuda.is_available() else "cpu"
