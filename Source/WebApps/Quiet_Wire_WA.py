@@ -1,3 +1,5 @@
+# 1. Import Libraries and Load Model
+
 import os
 # os.system("pip freeze")
 import cv2
@@ -19,9 +21,20 @@ choices_to_query = {
     "Demonstration": "crowd demonstration"
 }
 
+threshold_dict = {
+    "Crash": 29,
+    "Traffic Jam": 25,
+    "Flood": 25,
+    "Demonstration": 23
+}
+
+blank_image = Image.open('/content/image-not-found-scaled.png')
+
 # Load the open CLIP model
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model, preprocess = clip.load("ViT-B/32", device=device)
+
+# 2. Inference Function
 
 def inference(video, query, advance_query, slider):
   # The frame images will be stored in video_frames
@@ -115,11 +128,23 @@ def inference(video, query, advance_query, slider):
     frame_id += (frame_id+1)*num_skip_frames
     seconds = round(frame_id/fps)
 
+  if query in threshold_dict:
+    threshold = threshold_dict[query]
+    if values.item() < threshold:
+      return blank_image, "There is no frame corresponding to the query"
+
   return frame, f"Found at {str(datetime.timedelta(seconds=seconds))} with similarity {values.item()}"
 
-# Gradio UI
+# 3. Run and Deploy Inference Interface 
+
 with gr.Blocks() as demo:
-  gr.Markdown("Query based on text or image to search event in a video.")
+  gr.Markdown(f"""
+  # Road Event Video Search
+  To use this interactive demo:
+  1. Upload a video you want to query
+  2. Select text query
+  3. Click **Search**.
+  """)
   choices = list(choices_to_query.keys())
   with gr.Tab("Text Query"):
     with gr.Row():
