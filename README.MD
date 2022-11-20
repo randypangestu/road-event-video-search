@@ -14,7 +14,7 @@ Dalam projek ini, kami akan mengaplikasikan model zero-shot learning CLIP pada k
 
 ### Jalankan Langsung di Colab (Opsi 1)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Mj8fv8NxFg_9udbfZB8vc6IbBj88rLBQ?usp=sharing)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1bwXqydl9oEfYEzFwwZWLL92Me-EZJLit?usp=sharing)
 
 Untuk mencoba WebApp ini bisa langsung mengunjungi link di atas untuk melakukan deployment WebApp di Colab. Jalankan cell yang ada secara berurutan dan nantinya akan muncul link Gradio yang bisa diakses secara public.
 
