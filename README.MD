@@ -1,31 +1,36 @@
 # Road Event Video Search
 
-Repository ini menyediakan data, script dan contoh demo untuk Road Event Video Search WebApp.
+This repository provides the data, scripts, and demo examples for the Road Event Video Search WebApp.
 
 ## Deskripsi
 
-Road Event Video Search adalah sebuah sistem yang menggabungkan data teks dan visual untuk mendeteksi anomali pada lalu lintas kendaraan dan pejalan kaki.
+**Road Event Video Search** is a system that combines textual and visual data to detect anomalies in vehicle and pedestrian traffic.
 
-Sistem ini menggunakan model zero-shot learning yang dilatih menggunakan data visual dan teks. Karena dilatih dengan jumlah data yang sangat banyak dan beragam, model ini dapat digunakan untuk berbagai jenis aplikasi, yakni memiliki sifat yang general.
+This system uses a **zero-shot learning** model trained on both visual and textual data. Due to the extensive and diverse training data, the model is highly generalizable and can be applied to various use cases.
 
-Dalam projek ini, kami akan mengaplikasikan model zero-shot learning CLIP pada kasus spesifik, yaitu fenomena lalu lintas. Kami mengelompokan fenomena lalu lintas menjadi crashes, traffic jam, flood, dan demonstration.
+In this project, we apply the **CLIP zero-shot learning** model to a specific case: traffic-related events. We categorize these events into the following types:
 
-## Install
+- Crashes  
+- Traffic jams  
+- Floods  
+- Demonstrations
 
-### Jalankan Langsung di Colab (Opsi 1)
+
+## Installation
+### Run Directly on Colab (Option 1)
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1bwXqydl9oEfYEzFwwZWLL92Me-EZJLit?usp=sharing)
 
 Untuk mencoba WebApp ini bisa langsung mengunjungi link di atas untuk melakukan deployment WebApp di Colab. Jalankan cell yang ada secara berurutan dan nantinya akan muncul link Gradio yang bisa diakses secara public.
 
-### Install Library Menggunakan pip (Opsi 2)
+### Install via pip (Option 2)
 
 ```bash
 cd Source/WebApps/
 pip3 install -r requirements.txt
 ```
 
-### Jalankan Menggunakan Python
+### Run With Python
 
 ```bash
 cd Source/WebApps/
